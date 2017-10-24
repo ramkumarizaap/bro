@@ -1,13 +1,5 @@
 <?php if(get_current_user_id() === FALSE):?>
 
-<header class="brdr_bot">
-    <div class="container">
-        <div class="row text-center">
-            Login
-        </div>
-    </div>
-</header>
-
 <?php else:?>
 
 <div class="page-container">

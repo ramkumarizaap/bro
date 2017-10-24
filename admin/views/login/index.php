@@ -1,4 +1,3 @@
-
 <body class="login">
 <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 <div class="menu-toggler sidebar-toggler">
@@ -43,7 +42,7 @@
 	<!-- END LOGIN FORM -->
 </div>
 <div class="copyright">
-	 2014 © Metronic. Admin Dashboard Template.
+	 <?=date('Y');?> © BRO Admin Panel.
 </div>
 
 </body>
