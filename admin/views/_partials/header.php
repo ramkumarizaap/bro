@@ -70,6 +70,13 @@
           <?=($uri=='dashboard')?"<span class='selected'>":"";?>
           </a>
         </li>
+        <li class="start <?=($uri=='profile')?'active':'';?>">
+          <a href="<?=site_url('profile');?>">
+          <i class="fa fa-anchor"></i>
+          <span class="title">Profile</span>
+          <?=($uri=='profile')?"<span class='selected'>":"";?>
+          </a>
+        </li>
       </ul>
     </div>
   </div>

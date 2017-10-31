@@ -18,7 +18,7 @@ $root = (empty($_SERVER['HTTPS'])?'http://':'https://');
 
 $host = $_SERVER['HTTP_HOST'];
 if($_SERVER['HTTP_HOST']=='localhost')
- $host = 'localhost/construction/';
+ $host = 'localhost/bro/';
 
 
 $config['base_url'] = $root.$host;
