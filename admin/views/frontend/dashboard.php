@@ -15,7 +15,9 @@
 				<h2>Let's get Started!</h2><br><br>
 				<div class="row">
 					<div class="col-md-5">&nbsp;</div>
-					<div class="col-md-2 btn btn-primary"><i class="fa fa-user"></i> My Information</div>
+					<div class="col-md-2 btn btn-primary">
+						<a href="<?=site_url('personal_info');?>"><i class="fa fa-user"></i> My Information
+					</div>
 				</div>
 				<div class="clearfix"></div><br>
 				<div class="row">

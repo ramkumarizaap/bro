@@ -475,5 +475,19 @@ function is_valid_user($user_id = 0)
 
     return $result->num_rows()?TRUE:FALSE;
 }
-
+function get_user_info()
+{
+    $user_id = get_current_user_id();
+    $CI = &get_instance();
+    $CI->db->where("a.id",$user_id);
+    $CI->db->select("a.*,b.*,c.*,d.*,IF(a.role_id='1','Yes','No') as is_admin,e.*,f.*,a.id as user_id");
+    $CI->db->from("users a");
+    $CI->db->join("personal_info b","a.id=b.user_id");
+    $CI->db->join("home_address c","a.id=c.user_id");
+    $CI->db->join("work_address d","a.id=d.user_id");
+    $CI->db->join("affiliations e","a.id=e.user_id");
+    $CI->db->join("family f","a.id=f.user_id");
+    $q = $CI->db->get();
+    return $q->row_array();
+}
 ?>

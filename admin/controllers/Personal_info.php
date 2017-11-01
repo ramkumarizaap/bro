@@ -95,7 +95,6 @@ class Personal_info extends Admin_Controller
       $ins5['kids'] = rtrim($kid1.$kid2.$kid3,",");
       if($edit_id)
       {
-        $ins['updated_by'] = get_current_user_id();
         $ins_id = $this->personal_model->update(array("id"=>$edit_id),$ins,"users");
         $ins_id1 = $this->personal_model->update(array("user_id"=>$edit_id),$ins1,"personal_info");
         $ins_id2 = $this->personal_model->update(array("user_id"=>$edit_id),$ins2,"home_address");
@@ -118,7 +117,19 @@ class Personal_info extends Admin_Controller
       }
       redirect("personal_info");
     }
-    $this->data['editdata'] = array("id"=>"","first_name"=>"","mason"=>"","status"=>"","is_admin"=>"","password"=>"","middle_name"=>"","last_name"=>"","mobile"=>"","phone"=>"","work"=>"","off_email"=>"","email"=>"","dob"=>"","b_city"=>"","b_state"=>"","address1"=>"","address2"=>"","city"=>"","state"=>"","zip"=>"","w_address1"=>"","w_address2"=>"","w_city"=>"","w_state"=>"","w_zip"=>"","york_rite"=>"","scottish_rite"=>"","shriner"=>"","grotto"=>"","spouse"=>"","kids1"=>"","kids2"=>"","kids3"=>"");
+    $info = get_user_info();
+    if($info)
+    {
+      $kids = explode(",",$info['kids']);
+      $info['kids1'] = $kids[0];
+      $info['kids2'] = $kids[1];
+      $info['kids3'] = $kids[2];
+      $this->data['editdata'] = $info;
+    }
+    else
+    {
+      $this->data['editdata'] = array("user_id"=>"","first_name"=>"","mason"=>"","status"=>"","is_admin"=>"","password"=>"","middle_name"=>"","last_name"=>"","mobile"=>"","phone"=>"","work"=>"","off_email"=>"","email"=>"","dob"=>"","b_city"=>"","b_state"=>"","address1"=>"","address2"=>"","city"=>"","state"=>"","zip"=>"","w_address1"=>"","w_address2"=>"","w_city"=>"","w_state"=>"","w_zip"=>"","york_rite"=>"","scottish_rite"=>"","shriner"=>"","grotto"=>"","spouse"=>"","kids1"=>"","kids2"=>"","kids3"=>"");
+    }
     $this->layout->view('frontend/personal_info/index');
   }
 }

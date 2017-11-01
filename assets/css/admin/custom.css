@@ -74,3 +74,8 @@ Change Quick Sidebar Width
   margin: 0 auto;
   text-align: center;
 }
+.dashboard-content div a
+{
+  color: #fff;
+  text-decoration: none;
+}

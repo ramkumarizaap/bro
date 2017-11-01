@@ -58,7 +58,7 @@
 					</div>
 					<div class="portlet-body form">
 						<form class="form-horizontal" role="form" method="post" action="">
-							<input type="hidden" name="id" value="<?=$editdata['id'];?>">
+							<input type="hidden" name="id" value="<?=$editdata['user_id'];?>">
 							<div class="form-body">
 								<div class="row">
 									<div class="col-md-3 <?=(form_error('mason'))?'has-error':'';?>">
