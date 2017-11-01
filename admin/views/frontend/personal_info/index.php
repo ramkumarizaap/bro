@@ -78,7 +78,7 @@
 									</div>
 									<div class="col-md-3">
 										<label class="control-label">Password</label>
-										<input class="form-control" placeholder="" type="password" name="password" value="<?=set_value('password',$editdata['password']);?>">
+										<input class="form-control" placeholder="" type="password" name="password" value="<?=set_value('password');?>">
 									</div>
 								</div>
 								<h3>Personal Details</h3>
