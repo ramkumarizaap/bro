@@ -1,7 +1,7 @@
 $(function()
 {
-
-
+    
+     tab_view('chapter','chapter/add','');
     $("[data-fancybox]").fancybox({
     // Options will go here
   });
@@ -131,12 +131,13 @@ function change_status(id='',type='')
   }
 }
 
-function tab_view(id)
+function tab_view(id,url,formid='')
 {
+   var form_data = $("#"+formid).serialize();
     $.ajax({
         type:"POST",
-        url:base_url+'chapter/add',
-        data:{},
+        url:base_url+url,
+        data:form_data,
         dataType:'json',
         success:function(data)
         {

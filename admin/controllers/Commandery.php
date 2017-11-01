@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 require_once(COREPATH."controllers/Admin_controller.php");
-class Chapter extends Admin_Controller
+class Commandery extends Admin_Controller
 {
 	function __construct()
   {
@@ -26,12 +26,12 @@ class Chapter extends Admin_Controller
           if($this->input->post('edit_id'))            
             $edit_id = $this->input->post('edit_id');
            
-          $this->form_validation->set_rules('chapter_name','Chapter Name','trim|required');
-          $this->form_validation->set_rules('chapter_no','Chapter No','trim|required');
+          $this->form_validation->set_rules('comm_name','Commandary Name','trim|required');
+          $this->form_validation->set_rules('comm_no','Commandery No','trim|required');
           $this->form_validation->set_rules('district_no','District No','trim|required');
           $this->form_validation->set_rules('top_line_signer','Top Line Signer','trim|required');
-          $this->form_validation->set_rules('most_high_priest','Most High Priest','trim|required');
-          $this->form_validation->set_rules('district_high_priest','District High Priest','trim|required');
+          $this->form_validation->set_rules('master_emi_cmdr','Master Emi Cmdr','trim|required');
+          $this->form_validation->set_rules('district_emi_cmdr','District High Priest','trim|required');
          // $this->form_validation->set_rules('category_id','Color','trim|required');
         //  $this->form_validation->set_rules('row','Row','trim|required|numeric');
         //  $this->form_validation->set_rules('units','Units','trim|required|numeric');
@@ -42,36 +42,35 @@ class Chapter extends Admin_Controller
           if($this->form_validation->run()){
             
               $ins_data = array();
-              $ins_data['chapter_name']              = $this->input->post('chapter_name');
-              $ins_data['chapter_no']                = $this->input->post('chapter_no');
+              $ins_data['comm_name']                 = $this->input->post('comm_name');
+              $ins_data['comm_no']                   = $this->input->post('comm_no');
               $ins_data['district_no']               = $this->input->post('district_no');
               $ins_data['top_line_signer']           = $this->input->post('top_line_signer');  
               $ins_data['second_line_signer']        = $this->input->post('second_line_signer');
               $ins_data['date_joined']               = $this->input->post('date_joined');
-              $ins_data['most_high_priest']          = $this->input->post('most_high_priest');
+              $ins_data['master_emi_cmdr']           = $this->input->post('master_emi_cmdr');
               $ins_data['year1']                     = $this->input->post('year1');
-              $ins_data['district_high_priest']      = $this->input->post('district_high_priest');
+              $ins_data['district_emi_cmdr']         = $this->input->post('district_emi_cmdr');
               $ins_data['year2']                     = $this->input->post('year2');
-              $ins_data['hight_priest']              = $this->input->post('hight_priest');
+              $ins_data['emi_cmdr']                  = $this->input->post('emi_cmdr');
               $ins_data['year3']                     = $this->input->post('year3');
-              $ins_data['king']                      = $this->input->post('king');
-              $ins_data['scribe']                    = $this->input->post('scribe');
-              $ins_data['secretary']                 = $this->input->post('secretary');
+              $ins_data['generalsmo']                = $this->input->post('generalsmo');
+              $ins_data['capt_general']              = $this->input->post('capt_general');
+              $ins_data['recorder']                  = $this->input->post('recorder');
               $ins_data['treasurer']                 = $this->input->post('treasurer');
-              $ins_data['capt_host']                 = $this->input->post('capt_host');
-              $ins_data['principal_sojourner']       = $this->input->post('principal_sojourner');
-              $ins_data['ra_captain']                = $this->input->post('ra_captain');
-              $ins_data['master_vef_1']              = $this->input->post('master_vef_1');
-              $ins_data['master_vef_2']              = $this->input->post('master_vef_2');
-              $ins_data['master_vef_3']              = $this->input->post('master_vef_3');
-              $ins_data['chaptain']                  = $this->input->post('chaptain');
+              $ins_data['sr_warden']                 = $this->input->post('sr_warden');
+              $ins_data['jr_warden']                 = $this->input->post('jr_warden');
+              $ins_data['prebate']                   = $this->input->post('prebate');
+              $ins_data['sword_bearer']              = $this->input->post('sword_bearer');
+              $ins_data['stand_bearer']              = $this->input->post('stand_bearer');
+              $ins_data['warden']                    = $this->input->post('warden');
               $ins_data['sentinel']                  = $this->input->post('sentinel');
               
               if($edit_id){
                // $ins_data['updated_date'] = date('Y-m-d H:i:s'); 
                // $ins_data['updated_id']   = get_current_user_id();    
-                $msg                      = 'Chapter updated successfully';
-                $this->chapter_model->update(array("id" => $edit_id),$ins_data);
+                $msg                      = 'Commendary updated successfully';
+                $this->chapter_model->update(array("id" => $edit_id),$ins_data,'commendary');
                // log_history($edit_id,'inventory',"Product <b>".$ins_data['name']."</b> has been updated."); 
               }
               else
@@ -79,8 +78,8 @@ class Chapter extends Admin_Controller
               //  $ins_data['created_date'] = date('Y-m-d H:i:s'); 
               //  $ins_data['updated_date'] = date('Y-m-d H:i:s');
               //  $ins_data['created_id']   = get_current_user_id();  
-                $new_id                   = $this->chapter_model->insert($ins_data);         
-                $msg                      = 'Chapter added successfully';
+                $new_id                   = $this->chapter_model->insert($ins_data,'commendary');         
+                $msg                      = 'Commendary added successfully';
                 $edit_id                  =  $new_id;
                // log_history($new_id,'inventory',"Product <b>".$ins_data['name']."</b> has been inserted."); 
               }
@@ -90,28 +89,27 @@ class Chapter extends Admin_Controller
           else
           {
             $edit_data = array();
-            $edit_data['chapter_name']              = '';
-            $edit_data['chapter_no']                = '';
+            $edit_data['comm_name']                 = '';
+            $edit_data['comm_no']                   = '';
             $edit_data['district_no']               = '';
             $edit_data['top_line_signer']           = '';  
             $edit_data['date_joined']               = '';
-            $edit_data['most_high_priest']          = '';
+            $edit_data['master_emi_cmdr']           = '';
             $edit_data['year1']                     = '';
-            $edit_data['district_high_priest']      = '';
+            $edit_data['district_emi_cmdr']         = '';
             $edit_data['year2']                     = '';
-            $edit_data['hight_priest']              = '';
+            $edit_data['emi_cmdr']                  = '';
             $edit_data['year3']                     = '';
-            $edit_data['king']                      = '';
-            $edit_data['scribe']                    = '';
-            $edit_data['secretary']                 = '';
+            $edit_data['generalsmo']                = '';
+            $edit_data['capt_general']              = '';
+            $edit_data['recorder']                  = '';
             $edit_data['treasurer']                 = '';
-            $edit_data['capt_host']                 = '';
-            $edit_data['principal_sojourner']       = '';
-            $edit_data['ra_captain']                = '';
-            $edit_data['master_vef_1']              = '';
-            $edit_data['master_vef_2']              = '';
-            $edit_data['master_vef_3']              = '';
-            $edit_data['chaptain']                  = '';
+            $edit_data['sr_warden']                 = '';
+            $edit_data['jr_warden']                 = '';
+            $edit_data['prebate']                   = '';
+            $edit_data['sword_bearer']              = '';
+            $edit_data['stand_bearer']              = '';
+            $edit_data['warden']                    = '';
             $edit_data['sentinel']                  = '';
             $status = 'error';
           }
@@ -129,12 +127,12 @@ class Chapter extends Admin_Controller
         $this->data['editdata']              = $edit_data;
         
         if($this->input->is_ajax_request()){
-          $output  = $this->load->view('frontend/yorksite/chapter',$this->data,true);
+          $output  = $this->load->view('frontend/yorksite/commandery',$this->data,true);
           return $this->_ajax_output(array('status' => $status, 'output' => $output, 'edit_id' => $edit_id), TRUE);
         } 
         else
         {
-            $this->layout->view('frontend/yorksite/chapter',$this->data);
+            $this->layout->view('frontend/yorksite/commandery',$this->data);
         }  
   }
   

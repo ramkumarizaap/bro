@@ -241,7 +241,7 @@
               <div class="form-actions">
                  <div class="row">
                     <div class="col-md-offset-3 col-md-9">
-                       <button type="button" class="btn green" onclick="tab_view('chapter')">Submit</button>
+                       <button type="button" class="btn green" onclick="tab_view('chapter','chapter/add','add_chapter')">Submit</button>
                        <a href="<?php echo site_url('chapter');?>" class="btn default">Cancel</a>
                     </div>
                  </div>
