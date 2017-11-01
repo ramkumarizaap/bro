@@ -10,7 +10,7 @@ class Chapter extends Admin_Controller
     if(!is_logged_in())
       redirect('login');
       
-    $this->load->model('chapter');  
+    $this->load->model('chapter_model');  
   }
 
   
@@ -29,9 +29,9 @@ class Chapter extends Admin_Controller
           $this->form_validation->set_rules('chapter_name','Chapter Name','trim|required');
           $this->form_validation->set_rules('chapter_no','Chapter No','trim|required|callback_sku_unique_check['.$edit_id.']');
           $this->form_validation->set_rules('district_no','District No','trim|required');
-          $this->form_validation->set_rules('top_line_signer','Color','trim|required');
-          $this->form_validation->set_rules('most_high_priest','Form','trim|required');
-          $this->form_validation->set_rules('district_high_priest','Package','trim|required');
+          $this->form_validation->set_rules('top_line_signer','Top Line Signer','trim|required');
+          $this->form_validation->set_rules('most_high_priest','Most High Priest','trim|required');
+          $this->form_validation->set_rules('district_high_priest','District High Priest','trim|required');
          // $this->form_validation->set_rules('category_id','Color','trim|required');
         //  $this->form_validation->set_rules('row','Row','trim|required|numeric');
         //  $this->form_validation->set_rules('units','Units','trim|required|numeric');
@@ -46,6 +46,7 @@ class Chapter extends Admin_Controller
               $ins_data['chapter_no']                = $this->input->post('chapter_no');
               $ins_data['district_no']               = $this->input->post('district_no');
               $ins_data['top_line_signer']           = $this->input->post('top_line_signer');  
+              $ins_data['second_line_signer']        = $this->input->post('second_line_signer');
               $ins_data['date_joined']               = $this->input->post('date_joined');
               $ins_data['most_high_priest']          = $this->input->post('most_high_priest');
               $ins_data['year1']                     = $this->input->post('year1');
@@ -129,11 +130,11 @@ class Chapter extends Admin_Controller
         
         if($this->input->is_ajax_request()){
           $output  = $this->load->view('frontend/yorksite/chapter',$this->data,true);
-          return $this->_ajax_output(array('status' => $status,'message' => $msg,'output' => $output, 'edit_id' => $edit_id), TRUE);
+          return $this->_ajax_output(array('status' => $status, 'output' => $output, 'edit_id' => $edit_id), TRUE);
         } 
         else
         {
-            $this->load->view('frontend/yorksite/chapter',$this->data);
+            $this->layout->view('frontend/yorksite/chapter',$this->data);
         }  
   }
   

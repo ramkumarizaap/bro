@@ -130,3 +130,18 @@ function change_status(id='',type='')
     });
   }
 }
+
+function tab_view(id)
+{
+    $.ajax({
+        type:"POST",
+        url:base_url+'chapter/add',
+        data:{},
+        dataType:'json',
+        success:function(data)
+        {
+          $("#"+id).trigger('click');
+          $("#"+id).html(data.output);
+        }
+    });
+}
