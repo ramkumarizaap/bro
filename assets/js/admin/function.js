@@ -19,6 +19,11 @@ $(function()
         }
     });
 
+
+    $(".singledate").datepicker({
+        format: 'mm/dd/yyyy'
+    })
+
     $(".mt-repeater-add2").click(function()
     {
         if($(".mt-repeater-cust-item").length >= 1)

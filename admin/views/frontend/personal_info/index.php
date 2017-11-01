@@ -58,6 +58,7 @@
 					</div>
 					<div class="portlet-body form">
 						<form class="form-horizontal" role="form" method="post" action="">
+							<input type="hidden" name="id" value="<?=$editdata['id'];?>">
 							<div class="form-body">
 								<div class="row">
 									<div class="col-md-3 <?=(form_error('mason'))?'has-error':'';?>">
@@ -124,7 +125,7 @@
 									</div>
 									<div class="col-md-4 <?=(form_error('dob'))?'has-error':'';?>">
 										<label class="control-label">D.O.B<span class="required">*</span></label>
-										<input class="form-control" type="text" name="dob" value="<?=set_value('dob',$editdata['dob']);?>">
+										<input class="form-control singledate" type="text" name="dob" value="<?=set_value('dob',$editdata['dob']);?>">
 										<?=form_error('dob');?>
 									</div>
 								</div>
