@@ -14,7 +14,7 @@
             <ul class="nav nav-tabs">
               <li class="active"><a data-toggle="tab" id="tab1" href="#chapter" onclick="tab_view('chapter','chapter/add','')">Chapter</a></li>
               <li><a data-toggle="tab" href="#council" onclick="tab_view('council','council/add','')" >Council</a></li>
-              <li><a data-toggle="tab" href="#commandery" onclick="tab_view('commandery','commandery/add','')">Commandery</a></li>
+              <li><a data-toggle="tab" href="#commandery" onclick="tab_view('commandery','commandery/add','')">Commendary</a></li>
             </ul>
             
             <div class="tab-content">

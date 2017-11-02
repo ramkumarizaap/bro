@@ -1,5 +1,11 @@
-
-<form class="mt-repeater form-horizontal" name="council" id="council" method="post" enctype="multipart/form-data">
+<div class="portlet box green ">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class="fa fa-table"></i> Council
+		</div>
+	</div>
+	<div class="portlet-body form">
+<form class="mt-repeater form-horizontal" name="add_council" id="add_council" method="post" enctype="multipart/form-data">
            <div class="form-body">
                <!--/row-->
               <div class="row">
@@ -34,7 +40,7 @@
                  </div>
                  <div class="col-md-6">
                     <div class="form-group <?php //echo (form_error('second_line_signer'))?'has-error':'';?>">
-                       <label class="control-label col-md-3">Second Line Singer:<span class="required">*</span></label>
+                       <label class="control-label col-md-3">Second Line Singer:</label>
                        <div class="col-md-9">
                           <input type="text" class="form-control form-control-inline" name="second_line_signer" id="second_line_signer" value="<?php echo (isset($editdata['second_line_signer']))?$editdata['second_line_signer']:""; ?>"> 
                           <?php //echo form_error('second_line_signer'); ?>
@@ -54,9 +60,9 @@
                  </div>
                  <div class="col-md-6">
                     <div class="form-group <?php echo (form_error('date_joined'))?'has-error':'';?>">
-                       <label class="control-label col-md-3">Date Joined:<span class="required">*</span></label>
+                       <label class="control-label col-md-3">Date Joined:</label>
                        <div class="col-md-9">
-                          <input type="text" class="form-control form-control-inline" name="date_joined" id="date_joined" value="<?php echo set_value('date_joined',$editdata['date_joined']);?>"> 
+                          <input type="text" class="form-control form-control-inline" name="date_joined" id="date_joined" value="<?php echo (isset($editdata['date_joined']))?$editdata['date_joined']:"";?>"> 
                           <?php echo form_error('date_joined'); ?>
                        </div>
                     </div>
@@ -64,17 +70,17 @@
               </div>
               <div class="row">
                  <div class="col-md-4">
-                    <div class="form-group <?php //echo (form_error('district_no'))?'has-error':'';?>">
+                    <div class="form-group <?php echo (form_error('most_il_master'))?'has-error':'';?>">
                        <label class="control-label col-md-3">Most Il Master?</label>
                        <div class="col-md-9">
-                          <input type="text" class="form-control" name="most_il_master" id="most_il_master" value="<?php echo (isset($editdata['most_il_master']))?$editdata['most_il_master']:"";?>"> 
-                          <?php //echo form_error('district_no'); ?>
+                          <input type="text" class="form-control" name="most_il_master" id="most_il_master" value="<?php echo set_value('most_il_master',$editdata['most_il_master']);?>"> 
+                          <?php echo form_error('most_il_master'); ?>
                        </div>
                     </div>
                  </div>
                  <div class="col-md-4">
                     <div class="form-group <?php //echo (form_error('date_joined'))?'has-error':'';?>">
-                       <label class="control-label col-md-3">Deputy Master?<span class="required">*</span></label>
+                       <label class="control-label col-md-3">Deputy Master?</label>
                        <div class="col-md-9">
                           <input type="text" class="form-control form-control-inline" name="deputy_master" id="deputy_master" value="<?php echo (isset($editdata['deputy_master']))?$editdata['deputy_master']:"";?>"> 
                           <?php //echo form_error('date_joined'); ?>
@@ -180,7 +186,7 @@
                  </div>
               </div>
               <div class="row">
-                 <div class="col-md-6">
+                 <div class="col-md-4">
                     <div class="form-group <?php //echo (form_error('district_no'))?'has-error':'';?>">
                        <label class="control-label col-md-3">Illustrious Master?</label>
                        <div class="col-md-9">
@@ -189,7 +195,7 @@
                        </div>
                     </div>
                  </div>
-                 <div class="col-md-6">
+                 <div class="col-md-4">
                     <div class="form-group <?php //echo (form_error('date_joined'))?'has-error':'';?>">
                        <label class="control-label col-md-3">Capt. of the Guard?</label>
                        <div class="col-md-9">
@@ -198,9 +204,11 @@
                        </div>
                     </div>
                  </div>
+                 <div class="col-md-4">
+                 </div>
               </div>
               <div class="row">
-                 <div class="col-md-6">
+                 <div class="col-md-4">
                     <div class="form-group <?php //echo (form_error('district_no'))?'has-error':'';?>">
                        <label class="control-label col-md-3">Year</label>
                        <div class="col-md-9">
@@ -209,7 +217,7 @@
                        </div>
                     </div>
                  </div>
-                 <div class="col-md-6">
+                 <div class="col-md-4">
                     <div class="form-group <?php //echo (form_error('date_joined'))?'has-error':'';?>">
                        <label class="control-label col-md-3">Cond. Of the Council?</label>
                        <div class="col-md-9">
@@ -218,17 +226,19 @@
                        </div>
                     </div>
                  </div>
-                 
+                  <div class="col-md-4">
+                  </div>
               </div> 
            </div>
               <div class="form-actions">
                  <div class="row">
                     <div class="col-md-offset-3 col-md-9">
-                       <button type="button" class="btn green" onclick="tab_view('council','council/add','council')">Submit</button>
+                       <button type="button" class="btn green" onclick="tab_view('council','council/add','add_council')">Submit</button>
                        <a href="<?php echo site_url('chapter');?>" class="btn default">Cancel</a>
                     </div>
                  </div>
               </div>
 
         </form>
-   
+   </div>
+  </div> 

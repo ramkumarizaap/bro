@@ -1,4 +1,11 @@
-   <form class="mt-repeater form-horizontal" name="commandery" id="commandery" method="post" enctype="multipart/form-data">
+  <div class="portlet box green ">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class="fa fa-table"></i> Commendary
+		</div>
+	</div>
+	<div class="portlet-body form">
+   <form class="mt-repeater form-horizontal" name="add_commandery" id="add_commandery" method="post" enctype="multipart/form-data">
            <div class="form-body">
                <!--/row-->
               <div class="row">
@@ -33,7 +40,7 @@
                  </div>
                  <div class="col-md-6">
                     <div class="form-group <?php //echo (form_error('second_line_signer'))?'has-error':'';?>">
-                       <label class="control-label col-md-3">Second Line Singer:<span class="required">*</span></label>
+                       <label class="control-label col-md-3">Second Line Singer:</label>
                        <div class="col-md-9">
                           <input type="text" class="form-control form-control-inline" name="second_line_signer" id="second_line_signer" value="<?php echo (isset($editdata['second_line_signer']))?$editdata['second_line_signer']:""; ?>"> 
                           <?php //echo form_error('second_line_signer'); ?>
@@ -61,19 +68,21 @@
                     </div>
                  </div>
               </div>
+              <div class="clearfix"></div>
+              <div class="clearfix"></div>
               <div class="row">
                  <div class="col-md-4">
-                    <div class="form-group <?php //echo (form_error('district_no'))?'has-error':'';?>">
+                    <div class="form-group <?php echo (form_error('master_emi_cmdr'))?'has-error':'';?>">
                        <label class="control-label col-md-3">M. Emin. Priest?</label>
                        <div class="col-md-9">
                           <input type="text" class="form-control" name="master_emi_cmdr" id="master_emi_cmdr" value="<?php echo (isset($editdata['master_emi_cmdr']))?$editdata['master_emi_cmdr']:"";?>"> 
-                          <?php //echo form_error('district_no'); ?>
+                          <?php echo form_error('master_emi_cmdr'); ?>
                        </div>
                     </div>
                  </div>
                  <div class="col-md-4">
                     <div class="form-group <?php //echo (form_error('date_joined'))?'has-error':'';?>">
-                       <label class="control-label col-md-3">Generalsmo?<span class="required">*</span></label>
+                       <label class="control-label col-md-3">Generalsmo?</label>
                        <div class="col-md-9">
                           <input type="text" class="form-control form-control-inline" name="generalsmo" id="generalsmo" value="<?php echo (isset($editdata['generalsmo']))?$editdata['generalsmo']:"";?>"> 
                           <?php //echo form_error('date_joined'); ?>
@@ -121,11 +130,11 @@
               </div>  
               <div class="row">
                  <div class="col-md-4">
-                    <div class="form-group <?php //echo (form_error('district_no'))?'has-error':'';?>">
-                       <label class="control-label col-md-3">Dist. Emin. Master?</label>
+                    <div class="form-group <?php echo (form_error('district_no'))?'has-error':'';?>">
+                       <label class="control-label col-md-3">Dist. Emin. Master?</label><span class="required">*</span>
                        <div class="col-md-9">
                           <input type="text" class="form-control" name="district_emi_cmdr" id="district_emi_cmdr" value="<?php echo (isset($editdata['district_emi_cmdr']))?$editdata['district_emi_cmdr']:"";?>"> 
-                          <?php //echo form_error('district_no'); ?>
+                          <?php echo form_error('district_no'); ?>
                        </div>
                     </div>
                  </div>
@@ -141,7 +150,7 @@
                  <div class="col-md-4">
                     <div class="form-group <?php //echo (form_error('date_joined'))?'has-error':'';?>">
                        <label class="control-label col-md-3">Stand Bearer?</label>
-                       <div class="col-md-9">v
+                       <div class="col-md-9">
                           <input type="text" class="form-control form-control-inline" name="stand_bearer" id="stand_bearer" value="<?php echo (isset($editdata['stand_bearer']))?$editdata['stand_bearer']:"";?>"> 
                           <?php //echo form_error('date_joined'); ?>
                        </div>
@@ -208,7 +217,7 @@
                  </div>
               </div>
               <div class="row">
-                 <div class="col-md-6">
+                 <div class="col-md-4">
                     <div class="form-group <?php //echo (form_error('district_no'))?'has-error':'';?>">
                        <label class="control-label col-md-3">Year</label>
                        <div class="col-md-9">
@@ -217,7 +226,7 @@
                        </div>
                     </div>
                  </div>
-                 <div class="col-md-6">
+                 <div class="col-md-4">
                     <div class="form-group <?php //echo (form_error('date_joined'))?'has-error':'';?>">
                        <label class="control-label col-md-3">Junior Warden?</label>
                        <div class="col-md-9">
@@ -226,17 +235,18 @@
                        </div>
                     </div>
                  </div>
-                
+                 <div class="col-md-4"></div>
               </div> 
            </div>
               <div class="form-actions">
                  <div class="row">
                     <div class="col-md-offset-3 col-md-9">
-                       <button type="button" class="btn green" onclick="tab_view('commandery','commandery/add','commandery')">Submit</button>
+                       <button type="button" class="btn green" onclick="tab_view('commandery','commandery/add','add_commandery')">Submit</button>
                        <a href="<?php echo site_url('chapter');?>" class="btn default">Cancel</a>
                     </div>
                  </div>
               </div>
 
         </form>
-   
+   </div>
+   </div>

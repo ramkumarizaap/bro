@@ -77,11 +77,11 @@
           <?=($uri=='personal_info')?"<span class='selected'>":"";?>
           </a>
         </li>
-        <li class="start <?=($uri=='profile')?'active':'';?>">
-          <a href="<?=site_url('profile');?>">
+        <li class="start <?=($uri=='yorksite')?'active':'';?>">
+          <a href="<?=site_url('yorksite');?>">
           <i class="fa fa-anchor"></i>
-          <span class="title">Profile</span>
-          <?=($uri=='profile')?"<span class='selected'>":"";?>
+          <span class="title">Yorksite</span>
+          <?=($uri=='yorksite')?"<span class='selected'>":"";?>
           </a>
         </li>
       </ul>

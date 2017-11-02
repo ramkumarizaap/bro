@@ -30,8 +30,11 @@ class Commandery extends Admin_Controller
           $this->form_validation->set_rules('comm_no','Commandery No','trim|required');
           $this->form_validation->set_rules('district_no','District No','trim|required');
           $this->form_validation->set_rules('top_line_signer','Top Line Signer','trim|required');
+          $this->form_validation->set_rules('date_joined','Date Joined','trim|required');
           $this->form_validation->set_rules('master_emi_cmdr','Master Emi Cmdr','trim|required');
           $this->form_validation->set_rules('district_emi_cmdr','District High Priest','trim|required');
+          
+          
          // $this->form_validation->set_rules('category_id','Color','trim|required');
         //  $this->form_validation->set_rules('row','Row','trim|required|numeric');
         //  $this->form_validation->set_rules('units','Units','trim|required|numeric');

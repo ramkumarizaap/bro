@@ -1,4 +1,10 @@
-
+<div class="portlet box green ">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class="fa fa-table"></i> Chapter
+		</div>
+	</div>
+	<div class="portlet-body form">
 <form class="mt-repeater form-horizontal" name="add_chapter" id="add_chapter" method="post" enctype="multipart/form-data">
            <div class="form-body">
                <!--/row-->
@@ -248,4 +254,5 @@
               </div>
 
         </form>
-   
+   </div>
+   </div>
