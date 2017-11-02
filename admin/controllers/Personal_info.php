@@ -46,8 +46,10 @@ class Personal_info extends Admin_Controller
 
   public function add($edit_id = '')
   {
+    $msg = "";
     try
     {
+
       if($this->input->post('id'))            
         $edit_id = $this->input->post('id');
       $this->form_validation->set_rules($this->_personal_validation_rules);
@@ -56,7 +58,7 @@ class Personal_info extends Admin_Controller
       {
         $form = $this->input->post();
         $edit_id = $form['id'];
-        if(isset($_FILES['userfile']['name']) && $_FILES['userfile']['size']>0)
+        if(isset($_FILES['file']['name']) && $_FILES['file']['size']>0)
         {
           $ins['photo'] = "assets/img/profile/".$this->do_upload()['file_name'];
         }
@@ -110,7 +112,7 @@ class Personal_info extends Admin_Controller
           $ins_id3 = $this->personal_model->update(array("user_id"=>$edit_id),$ins3,"work_address");
           $ins_id4 = $this->personal_model->update(array("user_id"=>$edit_id),$ins4,"affiliations");
           $ins_id5 = $this->personal_model->update(array("user_id"=>$edit_id),$ins5,"family");
-          $this->session->set_flashdata("success_msg","Personal Info updated successfully.");
+          $msg = "Personal Info updated successfully.";
         }
         else
         {
@@ -122,7 +124,7 @@ class Personal_info extends Admin_Controller
           $ins_id3 = $this->personal_model->insert($ins3,"work_address");
           $ins_id4 = $this->personal_model->insert($ins4,"affiliations");
           $ins_id5 = $this->personal_model->insert($ins5,"family");
-          $this->session->set_flashdata("success_msg","Personal Info inserted successfully.");
+          $msg = "Personal Info inserted successfully.";
         }
         $status  = 'success';
       }    
@@ -150,7 +152,7 @@ class Personal_info extends Admin_Controller
     if($this->input->is_ajax_request())
     {
       $output  = $this->load->view('frontend/profile/profile',$this->data,true);
-      return $this->_ajax_output(array('status' => $status, 'output' => $output, 'edit_id' => $edit_id), TRUE);
+      return $this->_ajax_output(array('status' => $status, 'output' => $output, 'edit_id' => $edit_id,"msg"=>$msg), TRUE);
     } 
     else
     {
@@ -166,7 +168,7 @@ class Personal_info extends Admin_Controller
       $config['max_width']            = 2024;
       $config['max_height']           = 1768;
       $this->load->library('upload', $config);
-      if ( ! $this->upload->do_upload('userfile'))
+      if ( ! $this->upload->do_upload('file'))
       {
         $data = array('error' => $this->upload->display_errors());
       }

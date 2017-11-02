@@ -134,17 +134,30 @@ function change_status(id='',type='')
 
 function tab_view(id,url,formid='')
 {
-   var form_data = $("#"+formid).serialize();
+   var form_data = $("#"+formid).serializeArray();
+   var formData = new FormData();
+   if(id=="personal_info" && formid=="add_profile")
+   {
+    if($('#userfile')[0]!='')
+      formData.append('file', $('#userfile')[0].files[0]);
+   }
+   $(form_data).each(function (index, element) {
+      formData.append(element.name, element.value);
+    });
     $.ajax({
         type:"POST",
         url:base_url+url,
-        data:form_data,
+        processData: false,
+        data:formData,
+        contentType: false,
         dataType:'json',
         success:function(data)
         {
           console.log(data);
           $("#"+id).trigger('click');
           $("#"+id).html(data.output);
+          if(data.status=="success")
+            service_message(data.status,data.msg);
         }
     });
 }

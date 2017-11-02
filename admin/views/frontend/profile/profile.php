@@ -95,7 +95,7 @@
 					</div>
 					<div class="col-md-4">
 						<label class="control-label">Photo</label>
-						<input class="form-control" placeholder="" type="file" name="userfile">
+						<input class="form-control" placeholder="" type="file" name="userfile" id="userfile">
 					</div>
 				</div>
 				<h3>Home Address</h3>
