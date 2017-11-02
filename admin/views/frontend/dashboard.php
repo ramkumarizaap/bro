@@ -16,7 +16,7 @@
 				<div class="row">
 					<div class="col-md-5">&nbsp;</div>
 					<div class="col-md-2 btn btn-primary">
-						<a href="<?=site_url('personal_info');?>"><i class="fa fa-user"></i> My Information
+						<a href="<?=site_url('profile');?>"><i class="fa fa-user"></i> My Information
 					</div>
 				</div>
 				<div class="clearfix"></div><br>
