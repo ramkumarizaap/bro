@@ -2,6 +2,7 @@ $(function()
 {
     
      tab_view('chapter','chapter/add','');
+     tab_view('personal_info','personal_info/add','');
     $("[data-fancybox]").fancybox({
     // Options will go here
   });
@@ -141,6 +142,7 @@ function tab_view(id,url,formid='')
         dataType:'json',
         success:function(data)
         {
+          console.log(data);
           $("#"+id).trigger('click');
           $("#"+id).html(data.output);
         }

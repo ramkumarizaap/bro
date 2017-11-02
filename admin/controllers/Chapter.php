@@ -32,11 +32,11 @@ class Chapter extends Admin_Controller
           $this->form_validation->set_rules('top_line_signer','Top Line Signer','trim|required');
           $this->form_validation->set_rules('most_high_priest','Most High Priest','trim|required');
           $this->form_validation->set_rules('district_high_priest','District High Priest','trim|required');
-         // $this->form_validation->set_rules('category_id','Color','trim|required');
-        //  $this->form_validation->set_rules('row','Row','trim|required|numeric');
-        //  $this->form_validation->set_rules('units','Units','trim|required|numeric');
-        //  $this->form_validation->set_rules('retail_price','Retail Price','trim|required');
-        //  $this->form_validation->set_rules('wholesale_price','Wholesale Price','trim|required');
+          // $this->form_validation->set_rules('category_id','Color','trim|required');
+          //  $this->form_validation->set_rules('row','Row','trim|required|numeric');
+          //  $this->form_validation->set_rules('units','Units','trim|required|numeric');
+          //  $this->form_validation->set_rules('retail_price','Retail Price','trim|required');
+          //  $this->form_validation->set_rules('wholesale_price','Wholesale Price','trim|required');
           
           $this->form_validation->set_error_delimiters('', '');
           if($this->form_validation->run()){

@@ -7,16 +7,17 @@
 		<div class="page-bar">
 			 <?php echo set_breadcrumb(); ?>
 		</div>
+		<?=display_flashmsg($this->session->flashdata());?>
 		<div class="row">
 			<div class="col-md-3">
 				<div class="portlet light profile-sidebar-portlet">
 					<!-- SIDEBAR USERPIC -->
 					<div class="profile-userpic">
-						<img src="<?=base_path();?>assets/img/photo3.jpg" class="img-responsive" alt="">
+						<img src="<?=base_path();?><?=($editdata['photo']!='')?$editdata['photo']:"assets/img/photo3.jpg";?>" class="img-responsive" alt="">
 					</div>
 					<div class="profile-usertitle">
 						<div class="profile-usertitle-name">
-							 Marcus Doe
+							 <?=$editdata['first_name']." ".$editdata['last_name'];?>
 						</div>
 					</div>
 					<div class="row padding-10">
@@ -25,20 +26,20 @@
 								<ul class="nav">
 									<li>
 										<div class="form-group">
-											<label class="control-label">Phone</label>
-											<input type="text" name="" class="form-control">
+											<label class="control-label">Phone</label><br>
+											<b><?=$editdata['phone'];?></b>
 										</div>
 									</li>
 									<li>
 										<div class="form-group">
-											<label class="control-label">Email</label>
-											<input type="text" name="" class="form-control">
+											<label class="control-label">Email</label><br>
+											<b><?=$editdata['email'];?></b>
 										</div>
 									</li>
 									<li>
 										<div class="form-group">
-											<label class="control-label">Home Blue Lodge</label>
-											<input type="text" name="" class="form-control">
+											<label class="control-label">Home Blue Lodge</label><br>
+											<b><?=$editdata['home_blue_lodge'];?></b>
 										</div>
 									</li>
 								</ul>
@@ -57,7 +58,7 @@
 						</div>
 					</div>
 					<div class="portlet-body form">
-						<form class="form-horizontal" role="form" method="post" action="">
+						<form class="form-horizontal" id="personal_info" role="form" method="post" action="" enctype="multipart/form-data">
 							<input type="hidden" name="id" value="<?=$editdata['user_id'];?>">
 							<div class="form-body">
 								<div class="row">
@@ -125,7 +126,7 @@
 									</div>
 									<div class="col-md-4 <?=(form_error('dob'))?'has-error':'';?>">
 										<label class="control-label">D.O.B<span class="required">*</span></label>
-										<input class="form-control singledate" type="text" name="dob" value="<?=set_value('dob',$editdata['dob']);?>">
+										<input class="form-control singledate" type="text" name="dob" value="<?=set_value('dob',date("m/d/Y",strtotime($editdata['dob'])));?>">
 										<?=form_error('dob');?>
 									</div>
 								</div>
@@ -139,6 +140,14 @@
 										<label class="control-label">Birth (State)<span class="required">*</span></label>
 										<input class="form-control" placeholder="" type="text" name="b_state" value="<?=set_value('b_state',$editdata['b_state']);?>">
 										<?=form_error('b_state');?>
+									</div>
+									<div class="col-md-4">
+										<label class="control-label">Home Blue Lodge</label>
+										<input class="form-control" placeholder="" type="text" name="home_blue_lodge" value="<?=set_value('home_blue_lodge',$editdata['home_blue_lodge']);?>">
+									</div>
+									<div class="col-md-4">
+										<label class="control-label">Photo</label>
+										<input class="form-control" placeholder="" type="file" name="userfile">
 									</div>
 								</div>
 								<h3>Home Address</h3>
@@ -248,6 +257,6 @@
 					</div>
 				</div>
 			</div>
-			</div>
+		</div>
 	</div>
 </div>

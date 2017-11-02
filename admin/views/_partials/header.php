@@ -70,18 +70,11 @@
           <?=($uri=='dashboard')?"<span class='selected'>":"";?>
           </a>
         </li>
-        <li class="start <?=($uri=='personal_info')?'active':'';?>">
-          <a href="<?=site_url('personal_info');?>">
+        <li class="start <?=($uri=='profile')?'active':'';?>">
+          <a href="<?=site_url('profile');?>">
           <i class="fa fa-user"></i>
-          <span class="title">Personal Info</span>
-          <?=($uri=='personal_info')?"<span class='selected'>":"";?>
-          </a>
-        </li>
-        <li class="start <?=($uri=='yorksite')?'active':'';?>">
-          <a href="<?=site_url('yorksite');?>">
-          <i class="fa fa-anchor"></i>
-          <span class="title">Yorksite</span>
-          <?=($uri=='yorksite')?"<span class='selected'>":"";?>
+          <span class="title">Profile</span>
+          <?=($uri=='profile')?"<span class='selected'>":"";?>
           </a>
         </li>
       </ul>
