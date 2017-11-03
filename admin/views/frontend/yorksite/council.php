@@ -123,7 +123,7 @@
                     <div class="form-group <?php //echo (form_error('district_no'))?'has-error':'';?>">
                        <label class="control-label col-md-3">Year</label>
                        <div class="col-md-9">
-                          <input type="text" class="form-control" name="year1" id="year1" value="<?php echo (isset($editdata['year1']))?$editdata['year1']:"";?>"> 
+                          <input type="text" class="form-control" name="year1" id="year1_council" value="<?php echo (isset($editdata['year1']))?$editdata['year1']:"";?>"> 
                           <?php //echo form_error('district_no'); ?>
                        </div>
                     </div>
@@ -217,7 +217,7 @@
                     <div class="form-group <?php //echo (form_error('district_no'))?'has-error':'';?>">
                        <label class="control-label col-md-3">Year</label>
                        <div class="col-md-9">
-                          <input type="text" class="form-control" name="year2" id="year2" value="<?php echo (isset($editdata['year2']))?$editdata['year2']:"";?>"> 
+                          <input type="text" class="form-control" name="year2" id="year2_council" value="<?php echo (isset($editdata['year2']))?$editdata['year2']:"";?>"> 
                           <?php //echo form_error('district_no'); ?>
                        </div>
                     </div>
@@ -296,7 +296,7 @@
                     <div class="form-group <?php //echo (form_error('district_no'))?'has-error':'';?>">
                        <label class="control-label col-md-3">Year</label>
                        <div class="col-md-9">
-                          <input type="text" class="form-control" name="year3" id="year3" value="<?php echo (isset($editdata['year3']))?$editdata['year3']:"";?>"> 
+                          <input type="text" class="form-control" name="year3" id="year3_council" value="<?php echo (isset($editdata['year3']))?$editdata['year3']:"";?>"> 
                           <?php //echo form_error('district_no'); ?>
                        </div>
                     </div>
@@ -333,3 +333,26 @@
         </form>
    </div>
   </div> 
+ <script>
+  $(document).ready(function(){
+ $("#date_joined_council").datepicker({
+        autoclose: true,  
+        format: "dd/mm/yyyy"
+     });
+      $('#year1_council').datepicker({
+        autoclose: true,  
+         minViewMode: 2,
+        format: "yyyy"
+     }); 
+      $('#year2_council').datepicker({
+        autoclose: true,  
+         minViewMode: 2,
+        format: "yyyy"
+     }); 
+      $('#year3_council').datepicker({
+        autoclose: true,  
+         minViewMode: 2,
+        format: "yyyy"
+     }); 
+   });  
+ </script> 

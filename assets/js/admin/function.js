@@ -1,18 +1,4 @@
-$(document).ready(function(){
-    
-     $('#date_joined_chapter').datepicker({
-        autoclose: true,  
-        format: "dd/mm/yyyy"
-     });  
-     $("#date_joined_commandery").datepicker({
-        autoclose: true,  
-        format: "dd/mm/yyyy"
-     });
-     $("#date_joined_council").datepicker({
-        autoclose: true,  
-        format: "dd/mm/yyyy"
-     });
-});
+
 
 $(function()
 {

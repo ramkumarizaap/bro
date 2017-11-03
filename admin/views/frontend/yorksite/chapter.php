@@ -356,3 +356,28 @@
     </form>
   </div>
 </div>
+<script>
+ $(document).ready(function(){
+    
+     $('#date_joined_chapter').datepicker({
+        autoclose: true,  
+        format: "dd/mm/yyyy"
+     }); 
+      $('#year1').datepicker({
+        autoclose: true,  
+         minViewMode: 2,
+        format: "yyyy"
+     }); 
+      $('#year2').datepicker({
+        autoclose: true,  
+         minViewMode: 2,
+        format: "yyyy"
+     }); 
+      $('#year3').datepicker({
+        autoclose: true,  
+         minViewMode: 2,
+        format: "yyyy"
+     }); 
+ });
+ 
+</script>     
