@@ -15,14 +15,34 @@
 				<h2>Let's get Started!</h2><br><br>
 				<div class="row">
 					<div class="col-md-5">&nbsp;</div>
-					<div class="col-md-2 btn btn-primary">
-						<a href="<?=site_url('profile');?>"><i class="fa fa-user"></i> My Information
-					</div>
+					<a href="<?=site_url('profile');?>">
+						<div class="col-md-2 btn btn-primary">
+							<i class="fa fa-user"></i> My Information
+						</div>
+					</a>
 				</div>
 				<div class="clearfix"></div><br>
 				<div class="row">
 					<div class="col-md-5"></div>
-					<div class="col-md-2 btn btn-primary"><i class="fa fa-users"></i> York Rite **</div>
+					<?php
+					$user = get_user_data();
+					 if($user['role_id']=="5")
+					 {
+					 	?>
+						<a href="<?=site_url('profile');?>">
+							<div class="col-md-2 btn btn-primary"><i class="fa fa-users"></i> York Rite **</div>
+						</a>
+						<?php
+					}
+					else
+					{
+						?>
+						<a href="<?=site_url('york');?>">
+							<div class="col-md-2 btn btn-primary"><i class="fa fa-users"></i> York Rite **</div>
+						</a>
+						<?php
+					}
+					?>
 				</div>
 				<div class="clearfix"></div><br>
 				<div class="row">

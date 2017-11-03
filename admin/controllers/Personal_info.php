@@ -107,30 +107,59 @@ class Personal_info extends Admin_Controller
         if($edit_id)
         {
           $ins_id = $this->personal_model->update(array("id"=>$edit_id),$ins,"users");
-          $ins_id1 = $this->personal_model->update(array("user_id"=>$edit_id),$ins1,"personal_info");
-          $ins_id2 = $this->personal_model->update(array("user_id"=>$edit_id),$ins2,"home_address");
-          $ins_id3 = $this->personal_model->update(array("user_id"=>$edit_id),$ins3,"work_address");
-          $ins_id4 = $this->personal_model->update(array("user_id"=>$edit_id),$ins4,"affiliations");
-          $ins_id5 = $this->personal_model->update(array("user_id"=>$edit_id),$ins5,"family");
           $msg = "Personal Info updated successfully.";
         }
         else
         {
           $ins['created_by'] = get_current_user_id();
           $ins_id = $this->personal_model->insert($ins,"users");
-          $ins1['user_id'] = $ins2['user_id'] = $ins3['user_id'] = $ins4['user_id'] = $ins5['user_id'] = $ins_id;
-          $ins_id1 = $this->personal_model->insert($ins1,"personal_info");
-          $ins_id2 = $this->personal_model->insert($ins2,"home_address");
-          $ins_id3 = $this->personal_model->insert($ins3,"work_address");
-          $ins_id4 = $this->personal_model->insert($ins4,"affiliations");
-          $ins_id5 = $this->personal_model->insert($ins5,"family");
           $msg = "Personal Info inserted successfully.";
+        }
+        $chk1 = $this->personal_model->get_where(array("user_id"=>$edit_id),"id","personal_info")->row_array();
+        $chk2 = $this->personal_model->get_where(array("user_id"=>$edit_id),"id","home_address")->row_array();
+        $chk3 = $this->personal_model->get_where(array("user_id"=>$edit_id),"id","work_address")->row_array();
+        $chk4 = $this->personal_model->get_where(array("user_id"=>$edit_id),"id","affiliations")->row_array();
+        $chk5 = $this->personal_model->get_where(array("user_id"=>$edit_id),"id","family")->row_array();
+        if($chk1)
+          $ins_id1 = $this->personal_model->update(array("user_id"=>$edit_id),$ins1,"personal_info");
+        else
+        {
+          $ins1['user_id'] = $edit_id;
+          $ins_id1 = $this->personal_model->insert($ins1,"personal_info");
+        }
+        if($chk2)
+          $ins_id2 = $this->personal_model->update(array("user_id"=>$edit_id),$ins2,"home_address");
+        else
+        {
+          $ins2['user_id'] = $edit_id;
+          $ins_id2 = $this->personal_model->insert($ins2,"home_address");
+        }
+        if($chk3)
+          $ins_id3 = $this->personal_model->update(array("user_id"=>$edit_id),$ins3,"work_address");
+        else
+        {
+          $ins3['user_id'] = $edit_id;
+          $ins_id3 = $this->personal_model->insert($ins3,"work_address");
+        }
+        if($chk4)
+          $ins_id4 = $this->personal_model->update(array("user_id"=>$edit_id),$ins4,"affiliations");
+        else
+        {
+          $ins4['user_id'] = $edit_id;
+          $ins_id4 = $this->personal_model->insert($ins4,"affiliations");
+        }
+        if($chk5)
+          $ins_id5 = $this->personal_model->update(array("user_id"=>$edit_id),$ins5,"family");
+        else
+        {
+          $ins5['user_id'] = $edit_id;
+          $ins_id5 = $this->personal_model->insert($ins5,"family");
         }
         $status  = 'success';
       }    
       else
       {
-        $this->data['editdata'] = array("user_id"=>"","first_name"=>"","mason"=>"","status"=>"","is_admin"=>"","password"=>"","middle_name"=>"","last_name"=>"","mobile"=>"","phone"=>"","work"=>"","off_email"=>"","email"=>"","dob"=>"","b_city"=>"","b_state"=>"","address1"=>"","address2"=>"","city"=>"","state"=>"","zip"=>"","w_address1"=>"","w_address2"=>"","w_city"=>"","w_state"=>"","w_zip"=>"","york_rite"=>"","scottish_rite"=>"","shriner"=>"","grotto"=>"","spouse"=>"","kids1"=>"","kids2"=>"","kids3"=>"");
+        $this->data['editdata'] = array("info"=>array("user_id"=>"","first_name"=>"","status"=>"","is_admin"=>"","password"=>"","middle_name"=>"","last_name"=>"","home_blue_lodge"=>"","phone"=>"","photo"=>"","email"=>""),"personal"=>array("mobile"=>"","work"=>"","off_email"=>"","dob"=>"","b_city"=>"","b_state"=>"","notes"=>"mason",""=>""),"home_address"=>array("address1"=>"","address2"=>"","city"=>"","state"=>"","zip"=>""),"work_address"=>array("w_address1"=>"","w_address2"=>"","w_city"=>"","w_state"=>"","w_zip"=>""),"affiliations"=>array("york_rite"=>"","scottish_rite"=>"","shriner"=>"","grotto"=>""),"family"=>array("spouse"=>"","kids1"=>"","kids2"=>"","kids3"=>""));
         $status = 'error';
       }
     }
@@ -142,17 +171,20 @@ class Personal_info extends Admin_Controller
      $info = get_user_info();
      if($info)
      {
-        $kids = explode(",",$info['kids']);
-        $info['kids1'] = $kids[0];
-        $info['kids2'] = $kids[1];
-        $info['kids3'] = $kids[2];
+        $info['kids1'] = $info['kids2'] = $info['kids3'] = "";
+        if($info['family']['kids'])
+        {
+          $kids = explode(",",$info['family']['kids']);
+          $info['kids1'] = $kids[0];
+          $info['kids2'] = $kids[1];
+          $info['kids3'] = $kids[2];
+        }
         $this->data['editdata'] = $info;
-     }         
-
+     }
     if($this->input->is_ajax_request())
     {
       $output  = $this->load->view('frontend/profile/profile',$this->data,true);
-      return $this->_ajax_output(array('status' => $status, 'output' => $output, 'edit_id' => $edit_id,"msg"=>$msg), TRUE);
+      return $this->_ajax_output(array('status' => $status, 'output' => $output, 'edit_id' => $edit_id,"msg"=>$msg,"info"=>$_FILES), TRUE);
     } 
     else
     {
@@ -165,8 +197,8 @@ class Personal_info extends Admin_Controller
       $config['upload_path']          = '../assets/img/profile/';
       $config['allowed_types']        = 'gif|jpg|png|jpeg';
       $config['max_size']             = 10000;
-      $config['max_width']            = 2024;
-      $config['max_height']           = 1768;
+      // $config['max_width']            = 2024;
+      // $config['max_height']           = 1768;
       $this->load->library('upload', $config);
       if ( ! $this->upload->do_upload('file'))
       {

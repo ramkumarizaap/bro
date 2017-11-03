@@ -23,7 +23,8 @@ $(function()
 
     $(".singledate").datepicker({
         format: 'mm/dd/yyyy'
-    })
+    });
+
 
     $(".mt-repeater-add2").click(function()
     {
@@ -36,6 +37,13 @@ $(function()
     });
 
 });	
+function init_datepicker()
+{
+  $(".singledate").datepicker({
+        format: 'mm/dd/yyyy'
+    });
+}
+
 
 //to delete selected record from list.
 function delete_record(del_url,elm){
@@ -138,7 +146,7 @@ function tab_view(id,url,formid='')
    var formData = new FormData();
    if(id=="personal_info" && formid=="add_profile")
    {
-    if($('#userfile')[0]!='')
+    // if($('#userfile')[0]!='')
       formData.append('file', $('#userfile')[0].files[0]);
    }
    $(form_data).each(function (index, element) {
