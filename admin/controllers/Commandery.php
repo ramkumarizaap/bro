@@ -21,6 +21,10 @@ class Commandery extends Admin_Controller
   
   public function add($edit_id = '')
   {
+     $this->layout->add_javascripts(array('bootstrap-datepicker.min'));  
+     $this->layout->add_stylesheets(array('bootstrap-datepicker3.min'));
+    
+    
      try
         {
           if($this->input->post('edit_id'))            
@@ -50,7 +54,7 @@ class Commandery extends Admin_Controller
               $ins_data['district_no']               = $this->input->post('district_no');
               $ins_data['top_line_signer']           = $this->input->post('top_line_signer');  
               $ins_data['second_line_signer']        = $this->input->post('second_line_signer');
-              $ins_data['date_joined']               = $this->input->post('date_joined');
+              $ins_data['date_joined']               = $this->input->post('date_joined_commandery');
               $ins_data['master_emi_cmdr']           = $this->input->post('master_emi_cmdr');
               $ins_data['year1']                     = $this->input->post('year1');
               $ins_data['district_emi_cmdr']         = $this->input->post('district_emi_cmdr');

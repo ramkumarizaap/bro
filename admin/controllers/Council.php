@@ -21,6 +21,9 @@ class Council extends Admin_Controller
   
   public function add($edit_id = '')
   {
+     $this->layout->add_javascripts(array('bootstrap-datepicker.min'));  
+     $this->layout->add_stylesheets(array('bootstrap-datepicker3.min'));
+    
      try
         {
           if($this->input->post('edit_id'))            
@@ -47,7 +50,7 @@ class Council extends Admin_Controller
               $ins_data['district_no']               = $this->input->post('district_no');
               $ins_data['top_line_signer']           = $this->input->post('top_line_signer');  
               $ins_data['second_line_signer']        = $this->input->post('second_line_signer');
-              $ins_data['date_joined']               = $this->input->post('date_joined');
+              $ins_data['date_joined']               = $this->input->post('date_joined_council');
               $ins_data['most_il_master']            = $this->input->post('most_il_master');
               $ins_data['year1']                     = $this->input->post('year1');
               $ins_data['district_il_master']        = $this->input->post('district_il_master');
